@@ -4,3 +4,45 @@ spring:
     username: ho
     password: ho
     driver-class-name: org.mariadb.jdbc.Driver
+
+  security:
+    user:
+      name: user
+      password: 1234
+
+  #  mvc:
+#    view:
+#      prefix: /
+#      suffix: .html
+
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:db/mariadb/data.sql
+#      data-locations: classpath*:db/${database}/data.sql
+
+  jpa:
+    defer-datasource-initialization: true   # https://charactermail.tistory.com/353
+    open-in-view: true # false -> 타임리프에서 지연로딩이 안된다.
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: true
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace
+
+server:
+  port: 8000
+#  servlet:
+#    context-path: /blog

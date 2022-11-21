@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="pageNav">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+    <th:block th:if="${boards.getNumber() == 0}">
+      <li class="page-item">
+        <a class="page-link disabled" th:href="@{?page=0}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item disabled">
+        <a class="page-link" th:href="@{?page={page} (page=${boards.getNumber() - 1})}" aria-label="Previous">
+          <span aria-hidden="true">&lt;</span>
+        </a>
+      </li>
+    </th:block>
+    <th:block th:if="${boards.getNumber() > 0}">
+      <li class="page-item">
+        <a class="page-link" th:href="@{?page=0}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li th:if="${boards.getNumber() > 0}" class="page-item">
+        <a class="page-link" th:href="@{?page={page} (page=${boards.getNumber() - 1})}" aria-label="Previous">
+          <span aria-hidden="true">&lt;</span>
+        </a>
+      </li>
+    </th:block>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" href="#">6</a></li>
+    <li class="page-item"><a class="page-link" href="#">7</a></li>
+    <li class="page-item"><a class="page-link" href="#">8</a></li>
+    <li class="page-item"><a class="page-link" href="#">9</a></li>
+    <th:block th:if="${boards.getNumber() == boards.getTotalPages()}">
+      <li class="page-item">
+        <a class="page-link disabled" th:href="@{?page={page} (page=${boards.getNumber() + 1})}" aria-label="Next">
+          <span aria-hidden="true">&gt;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link disabled" th:href="@{?page={page} (page=${boards.getTotalPages()})}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </th:block>
+    <th:block th:if="${boards.getNumber() < boards.getTotalPages()}">
+      <li class="page-item">
+        <a class="page-link" th:href="@{?page={page} (page=${boards.getNumber() + 1})}" aria-label="Next">
+          <span aria-hidden="true">&gt;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" th:href="@{?page={page} (page=${boards.getTotalPages()})}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </th:block>
+  </ul>
+</nav>
+</th:block>
+
+</html>

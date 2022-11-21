@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<!--<th:block th:replace="fragments/head :: head"></th:block>-->
+<head>
+  <th:block th:replace="fragments/bootstrap :: bootstrap"></th:block>
+
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+
+<body>
+  <th:block th:replace="fragments/navbar :: navbar"></th:block>
+
+  <div class="container">
+    <form>
+      <input id="board-id" type="hidden" th:value="${board.getId()}">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" placeholder="Enter the title" id="title" th:value="${board.getTitle()}">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Contents</label>
+        <textarea class="form-control summernote" id="content" th:text="${board.getContent()}"></textarea>
+      </div>
+    </form>
+    <button id="btn-update" class="btn btn-primary">Submit</button>
+  </div>
+  <th:block th:replace="fragments/footer :: footer"></th:block>
+
+  <script>
+    $('.summernote').summernote({
+      placeholder: 'Hello stand alone ui',
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    });
+  </script>
+  <script src="/js/board/board.js"></script>  <!-- 기본 경로부터 검색을 하기 때문에 하위 경로만 작성해주면 된다. -->
+</body>
+</html>

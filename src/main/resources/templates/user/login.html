@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="fragments/head :: head"></th:block>
+
+<body>
+<th:block th:replace="fragments/navbar :: navbar"></th:block>
+
+<div style="height: 1540px; width: 800px; margin: auto; margin-top: 40px">
+  <h1>로그인</h1>
+
+  <form action="/auth/signin" method="post">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" name="username" class="form-control" id="username">
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="password1">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="Check">
+      <label name="remember" class="form-check-label" for="Check">Remember me</label>
+    </div>
+
+    <div th:if="error">
+      <p id="valid" style="color: red; font-size:12px;"><span th:text="${exception}"></span></p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">로그인</button>
+  </form>
+<!--  <button id="btn-login" class="btn btn-primary">로그인</button>-->
+
+</div>
+<script ></script>
+
+<th:block th:replace="fragments/footer :: footer"></th:block>
+
+<script src="/js/user/user.js"></script>  <!-- 기본 경로부터 검색을 하기 때문에 하위 경로만 작성해주면 된다. -->
+</body>
+</html>
+
+
+<!--<button class="navbar-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--</button>-->

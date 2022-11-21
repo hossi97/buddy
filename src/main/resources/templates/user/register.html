@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:replace="fragments/head :: head"></th:block>
+
+<body>
+<th:block th:replace="fragments/navbar :: navbar"></th:block>
+
+<div style="height: 1540px; width: 800px; margin: auto; margin-top: 40px">
+  <h1>회원가입</h1>
+
+  <form>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email">
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username">
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password1">
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Password Confirm</label>
+      <input type="password" class="form-control" id="password2">
+    </div>
+<!--    <button type="submit" class="btn btn-primary">회원가입</button>-->
+  </form>
+  <button id="btn-save" class="btn btn-primary">회원가입</button>
+</div>
+
+<th:block th:replace="fragments/footer :: footer"></th:block>
+
+<script src="/js/user/user.js"></script>  <!-- 기본 경로부터 검색을 하기 때문에 하위 경로만 작성해주면 된다. -->
+</body>
+</html>
+
+
+<!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">&ndash;&gt;-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--</button>-->
